@@ -14,11 +14,12 @@ namespace FirstTry {
         public FirstPage() {
             InitializeComponent();
         }
-        //private void ButtonHello_Click(object sender, EventArgs e) {
-        //    Label1.Text = loginEntry.Text;
-        //}
-        private async void ButtonSignUp_Click(object sender, EventArgs e) {
-            await Navigation.PushAsync(new SignUpView());
+        // обработка нажатия кнопки добавления
+        private async void CreateUser(object sender, EventArgs e) {
+            User user = new User();
+            SignUpView signUpView = new SignUpView();
+            signUpView.BindingContext = user;
+            await Navigation.PushAsync(signUpView);
         }
 
     }

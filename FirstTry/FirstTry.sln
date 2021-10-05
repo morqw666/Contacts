@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstTry.UWP", "FirstTry\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstTry.Android", "FirstTry\FirstTry.Android\FirstTry.Android.csproj", "{EA263AB9-E590-4948-B269-12EE51A05639}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstTry", "FirstTry\FirstTry\FirstTry.csproj", "{AFE79124-28C9-49F0-AE1B-1B8311DFD2D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstTry", "FirstTry\FirstTry\FirstTry.csproj", "{AFE79124-28C9-49F0-AE1B-1B8311DFD2D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
