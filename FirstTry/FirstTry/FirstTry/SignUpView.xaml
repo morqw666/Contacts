@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FirstTry.SignUpView"
+             Title="Users SingIn">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            
+            <Frame Padding="40,0,40,0" Margin="0,150,0,0" CornerRadius="0" HasShadow="False">
+                <Entry x:Name="loginEntry" Placeholder="Login" FontSize="17"></Entry>
+            </Frame>
+            
+            <Frame Padding="40,0,40,0" CornerRadius="0" HasShadow="False">
+                <Entry x:Name="passwordEntry" Placeholder="Password" FontSize="17" IsPassword="true"></Entry>
+            </Frame>
+            
+            <Frame Padding="40,0,40,0" CornerRadius="0" HasShadow="False">
+                <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" FontSize="17" IsPassword="true"></Entry>
+            </Frame>
+
+            <Button Text="SIGN UP" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
