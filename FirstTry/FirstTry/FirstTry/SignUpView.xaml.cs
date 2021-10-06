@@ -46,6 +46,7 @@ namespace FirstTry {
                 DisplayAlert("Invalid login", "Login be at least 4 and no more then 16", "OK");
             }     
         }
+        //метод проверки логина
         private bool CheckLoginExists(string login) {
             var items = App.Database.GetItems();
             for (int i = 0; i < items.Count(); i++) {

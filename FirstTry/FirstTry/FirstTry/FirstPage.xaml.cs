@@ -14,6 +14,32 @@ namespace FirstTry {
         public FirstPage() {
             InitializeComponent();
         }
+        //по нажатию кнопки вызов метода проверки логина, проверка пароля и переход на MainListView
+        private void ButtonSignIn(object sender, EventArgs e) {
+            string pass = passwordEntry.Text;
+            string login = loginEntry.Text;
+            var userWithLogin = GetUserWithLogin(login);
+            if (userWithLogin != null) {
+                if (userWithLogin.Password == pass) {
+                    Navigation.PushAsync(new MainListView());
+                } else {
+                    DisplayAlert("Inavalid password", "Make sure password is correct", "OK");
+
+                }
+            } else {
+                DisplayAlert("Inavalid login", "Make sure login is correct", "OK");
+            }
+        }
+        //метод проверки логина (true or null)
+        private User GetUserWithLogin(string login) {
+            var users = App.Database.GetItems();
+            for (int i = 0; i < users.Count(); i++) {
+                var user = users.ElementAt(i);
+                if (user.Name == login)
+                    return user;
+            }
+            return null;
+        }
         // обработка нажатия кнопки добавления
         private async void CreateUser(object sender, EventArgs e) {
             User user = new User();
@@ -21,6 +47,5 @@ namespace FirstTry {
             signUpView.BindingContext = user;
             await Navigation.PushAsync(signUpView);
         }
-
     }
 }

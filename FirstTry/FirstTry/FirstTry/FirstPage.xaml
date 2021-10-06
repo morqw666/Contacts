@@ -20,7 +20,7 @@
                 <Entry x:Name="passwordEntry" Placeholder="Password" FontSize="17" IsPassword="true"></Entry>
             </Frame>
             
-            <Button Text="SIGN IN" IsEnabled="False" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand">
+            <Button Text="SIGN IN" Clicked="ButtonSignIn" IsEnabled="False" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand">
                 <Button.Triggers>
                     <MultiTrigger TargetType="Button">
                         <MultiTrigger.Conditions>
