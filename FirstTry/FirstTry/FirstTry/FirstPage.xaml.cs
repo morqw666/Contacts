@@ -14,6 +14,10 @@ namespace FirstTry {
         public FirstPage() {
             InitializeComponent();
         }
+        public void GetLogin(string getLogin) {
+            loginEntry.Text = getLogin;
+        }
+
         //по нажатию кнопки вызов метода проверки логина, проверка пароля и переход на MainListView
         private void ButtonSignIn(object sender, EventArgs e) {
             string pass = passwordEntry.Text;

@@ -31,7 +31,14 @@ namespace FirstTry {
                                 DisplayAlert("Ivalid login", "Please choose another one", "OK");
                             } else {
                                 App.Database.SaveItem(user);
-                                Navigation.PopAsync();
+                                //Navigation.PopAsync();
+                                var page = new FirstPage();
+                                page.GetLogin(login);
+                                NavigationPage.SetHasBackButton(page, false);
+                                Navigation.PushAsync(page);
+
+                                //var page = Navigation.PushAsync(new FirstPage());
+                                //NavigationPage.SetHasBackButton(page.Result, false);
                             }
                         } else {
                             DisplayAlert("Alert", "Please make sure your password match", "OK");
