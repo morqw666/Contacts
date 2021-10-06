@@ -36,9 +36,6 @@ namespace FirstTry {
                                 page.GetLogin(login);
                                 NavigationPage.SetHasBackButton(page, false);
                                 Navigation.PushAsync(page);
-
-                                //var page = Navigation.PushAsync(new FirstPage());
-                                //NavigationPage.SetHasBackButton(page.Result, false);
                             }
                         } else {
                             DisplayAlert("Alert", "Please make sure your password match", "OK");

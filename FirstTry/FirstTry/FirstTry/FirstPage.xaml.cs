@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,7 +25,13 @@ namespace FirstTry {
             var userWithLogin = GetUserWithLogin(login);
             if (userWithLogin != null) {
                 if (userWithLogin.Password == pass) {
-                    Navigation.PushAsync(new MainListView());
+                    var page = new MainListView();
+                    NavigationPage.SetHasBackButton(page, false);
+                    Navigation.PushAsync(page);
+                    try {
+                        SecureStorage.SetAsync("userKey", login);
+                    } catch (Exception ex) {
+                    }
                 } else {
                     DisplayAlert("Inavalid password", "Make sure password is correct", "OK");
 
@@ -51,5 +57,15 @@ namespace FirstTry {
             signUpView.BindingContext = user;
             await Navigation.PushAsync(signUpView);
         }
+        //
+        //private async void Test() {
+        //    try {
+        //        //await SecureStorage.SetAsync("userKey", "12312");
+        //        var test = SecureStorage.GetAsync("userKey");
+        //        await test;
+        //        DisplayAlert("Hi", test.Result, "kk");
+        //    } catch (Exception ex) {
+        //    }
+        //}
     }
 }

@@ -1,12 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FirstTry.MainListView">
+             x:Class="FirstTry.MainListView"
+             Title="Main List">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="OnClickLogOut" 
+                     Text="LogOut"
+                 IconImageSource="logout.png"
+                 Order="Primary"
+                 Priority="0" />
+        <ToolbarItem Text="Settings"
+                 IconImageSource="settings.png"
+                 Order="Primary"
+                 Priority="0" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            
+            <ListView x:Name="userList"
+              HasUnevenRows="True"
+              ItemsSource="{Binding Users}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <Label Text="{Binding Name}" FontSize="18" />
+                                    <Label Text="{Binding Password}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!--<ListView x:Name="userList" ItemsSource="{Binding Users}" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+    

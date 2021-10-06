@@ -2,6 +2,7 @@
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace FirstTry {
     public partial class App : Application {
@@ -19,8 +20,8 @@ namespace FirstTry {
         }
         public App() {
             InitializeComponent();
-
-            MainPage = new NavigationPage( new FirstPage());
+            LoadFirstPage();
+            //MainPage = new NavigationPage( new FirstPage());
         }
 
         protected override void OnStart() {
@@ -30,6 +31,19 @@ namespace FirstTry {
         }
 
         protected override void OnResume() {
+        }
+        private async void LoadFirstPage() {
+            try {
+                //await SecureStorage.SetAsync("userKey", "12312");
+                var test = SecureStorage.GetAsync("userKey");
+                await test;
+                if (test.Result == null) {
+                    MainPage = new NavigationPage(new FirstPage());
+                } else {
+                    MainPage = new NavigationPage(new MainListView());
+                }
+            } catch (Exception ex) {
+            }
         }
     }
 }
