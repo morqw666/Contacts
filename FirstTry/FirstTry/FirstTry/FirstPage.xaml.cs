@@ -30,7 +30,7 @@ namespace FirstTry {
                     Navigation.PushAsync(page);
                     try {
                         SecureStorage.SetAsync("userKey", login);
-                    } catch (Exception ex) {
+                    } catch (Exception) {
                     }
                 } else {
                     DisplayAlert("Inavalid password", "Make sure password is correct", "OK");
@@ -57,15 +57,5 @@ namespace FirstTry {
             signUpView.BindingContext = user;
             await Navigation.PushAsync(signUpView);
         }
-        //
-        //private async void Test() {
-        //    try {
-        //        //await SecureStorage.SetAsync("userKey", "12312");
-        //        var test = SecureStorage.GetAsync("userKey");
-        //        await test;
-        //        DisplayAlert("Hi", test.Result, "kk");
-        //    } catch (Exception ex) {
-        //    }
-        //}
     }
 }

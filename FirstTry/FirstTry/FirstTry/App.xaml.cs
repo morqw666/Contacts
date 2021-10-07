@@ -32,9 +32,9 @@ namespace FirstTry {
 
         protected override void OnResume() {
         }
+        //метод проверки ключа залогиненого юзера
         private async void LoadFirstPage() {
             try {
-                //await SecureStorage.SetAsync("userKey", "12312");
                 var test = SecureStorage.GetAsync("userKey");
                 await test;
                 if (test.Result == null) {
@@ -42,7 +42,7 @@ namespace FirstTry {
                 } else {
                     MainPage = new NavigationPage(new MainListView());
                 }
-            } catch (Exception ex) {
+            } catch (Exception) {
             }
         }
     }

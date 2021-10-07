@@ -20,6 +20,7 @@ namespace FirstTry {
             var page = new FirstPage();
             NavigationPage.SetHasBackButton(page, false);
             Navigation.PushAsync(page);
+
         }
     }
 }
