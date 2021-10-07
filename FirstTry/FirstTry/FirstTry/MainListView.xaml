@@ -15,11 +15,22 @@
                  Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            
-            <ListView x:Name="userList"
-              HasUnevenRows="True"
-              ItemsSource="{Binding Users}">
+        <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+            <!--<Frame Padding="40,0,40,0" Margin="0,150,0,0" CornerRadius="0" HasShadow="False">
+                <Entry x:Name="NickNameEntry" Text="{Binding NickName}" Placeholder="NickName" FontSize="17"></Entry>
+            </Frame>
+
+            <Frame Padding="40,0,40,0" CornerRadius="0" HasShadow="False">
+                <Entry x:Name="NameEntry" Text="{Binding FullName}" Placeholder="Name" FontSize="17"></Entry>
+            </Frame>
+
+            <Button x:Name="ButtoneAdd" IsEnabled="True" Text="Add" Clicked="SaveContact" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand"></Button>-->
+
+
+            <ListView x:Name="contactList"
+              HasUnevenRows="True">
+                <!--ItemsSource="{Binding Contact}"-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -34,7 +45,6 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <!--<ListView x:Name="userList" ItemsSource="{Binding Users}" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

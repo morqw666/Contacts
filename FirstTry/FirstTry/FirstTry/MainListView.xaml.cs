@@ -12,9 +12,13 @@ namespace FirstTry {
     public partial class MainListView : ContentPage {
         public MainListView() {
             InitializeComponent();
-            var listView = App.Database.GetItems();
-            userList.ItemsSource = listView;
+            var listView = App.DatabaseContact.GetItems();
+            contactList.ItemsSource = listView;
         }
+        //private void SaveContact(object sender, EventArgs e) {
+        //    var contact = (Contact)BindingContext;
+        //    App.DatabaseContact.SaveItem(contact);
+        //}
         private void OnClickLogOut(object sender, EventArgs e) {
             SecureStorage.Remove("userKey");
             var page = new FirstPage();

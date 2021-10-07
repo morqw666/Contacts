@@ -18,6 +18,18 @@ namespace FirstTry {
                 return database;
             }
         }
+        public const string DATABASE_CONTACT = "contacts.db";
+        public static ContactRepository databaseContact;
+        public static ContactRepository DatabaseContact {
+            get {
+                if (databaseContact == null) {
+                    databaseContact = new ContactRepository(
+                        Path.Combine(
+                            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DATABASE_CONTACT));
+                }
+                return databaseContact;
+            }
+        }
         public App() {
             InitializeComponent();
             LoadFirstPage();
