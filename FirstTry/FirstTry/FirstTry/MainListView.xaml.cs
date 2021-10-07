@@ -15,10 +15,12 @@ namespace FirstTry {
             var listView = App.DatabaseContact.GetItems();
             contactList.ItemsSource = listView;
         }
-        //private void SaveContact(object sender, EventArgs e) {
-        //    var contact = (Contact)BindingContext;
-        //    App.DatabaseContact.SaveItem(contact);
-        //}
+        private async void OnClickAddProfile(object sender, EventArgs e) {
+            Contact contact = new Contact();
+            AddEditProfileView addEditProfileView = new AddEditProfileView();
+            addEditProfileView.BindingContext = contact;
+            await Navigation.PushAsync(addEditProfileView);
+        }
         private void OnClickLogOut(object sender, EventArgs e) {
             SecureStorage.Remove("userKey");
             var page = new FirstPage();

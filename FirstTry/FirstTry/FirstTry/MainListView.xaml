@@ -4,6 +4,7 @@
              x:Class="FirstTry.MainListView"
              Title="Main List">
     <ContentPage.ToolbarItems>
+        
         <ToolbarItem Clicked="OnClickLogOut" 
                      Text="LogOut"
                  IconImageSource="logout.png"
@@ -13,39 +14,37 @@
                  IconImageSource="settings.png"
                  Order="Primary"
                  Priority="0" />
+        
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <!--<Frame Padding="40,0,40,0" Margin="0,150,0,0" CornerRadius="0" HasShadow="False">
-                <Entry x:Name="NickNameEntry" Text="{Binding NickName}" Placeholder="NickName" FontSize="17"></Entry>
-            </Frame>
-
-            <Frame Padding="40,0,40,0" CornerRadius="0" HasShadow="False">
-                <Entry x:Name="NameEntry" Text="{Binding FullName}" Placeholder="Name" FontSize="17"></Entry>
-            </Frame>
-
-            <Button x:Name="ButtoneAdd" IsEnabled="True" Text="Add" Clicked="SaveContact" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand"></Button>-->
-
-
-            <ListView x:Name="contactList"
-              HasUnevenRows="True">
-                <!--ItemsSource="{Binding Contact}"-->
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <StackLayout>
-                                    <Label Text="{Binding Name}" FontSize="18" />
-                                    <Label Text="{Binding Password}" />
-                                </StackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-        </StackLayout>
+            <StackLayout Padding="15, 0, 15, 0" BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <ListView x:Name="contactList"
+                      HasUnevenRows="True"
+                        ItemsSource="{Binding Contact}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Padding="0,10,0,10">
+                                        <Label Text="{Binding NickName}" FontAttributes="Bold" FontSize="18" />
+                                        <Label Text="{Binding FullName}" />
+                                        <Label Text="{Binding Date}" FontAttributes="Italic"/>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            
+            <Button Grid.Row="0" Text="Add" Clicked="OnClickAddProfile" BorderColor="#000" BorderWidth="8" FontAttributes="Bold" BackgroundColor="#1e90ff" BorderRadius="40" TextColor="White" HorizontalOptions="End" WidthRequest="80" HeightRequest="80" Margin="0,0,20,22" VerticalOptions="End"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
     
