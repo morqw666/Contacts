@@ -24,6 +24,9 @@ namespace FirstTry {
                     listView.Remove(contact);
                 }
             }
+            if (listView.Count() == 0) {
+                NoProfiles.IsVisible = true;
+            }
             contactList.ItemsSource = listView;
         }
         public ICommand MenuItemDeleteCommand => new Command(MenuItemDelete);

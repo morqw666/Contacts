@@ -18,6 +18,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid BackgroundColor="#fff">
+            <Label x:Name="NoProfiles" IsVisible="false" FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">No profiles added</Label>
         <ListView x:Name="contactList"
                       HasUnevenRows="True"
                         ItemsSource="{Binding Contact}">
