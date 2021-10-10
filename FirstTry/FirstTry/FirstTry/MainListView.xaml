@@ -17,7 +17,7 @@
 
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
+        <Grid BackgroundColor="#fff">
         <ListView x:Name="contactList"
                       HasUnevenRows="True"
                         ItemsSource="{Binding Contact}">
@@ -26,11 +26,10 @@
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <MenuItem Text="EDIT" Command="{Binding Path=contactList.EditCommand}" CommandParameter="{Binding}" />
-                            <MenuItem Text="DELETE" Command="{Binding Source={x:Reference contactList}, Path=DeleteCommand}" CommandParameter="{Binding}" />
-                                <MenuItem Text="DELETE" Command="{Binding MenuItemDeleteCommand}" CommandParameter="{Binding}" />
+                                <MenuItem Text="DELETE" Command="{Binding MenuItemDeleteCommand}" CommandParameter="{Binding Id}" />
                         </ViewCell.ContextActions>
                         <ViewCell.View>
-                            <Grid Padding="15, 20, 15, 20" BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <Grid Padding="15, 20, 15, 20">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.3*" />
                                     <ColumnDefinition Width="0.7*" />
@@ -73,7 +72,7 @@
                             <ViewCell.ContextActions>
                                 <MenuItem Text="EDIT"
                                         Command="{Binding Path=contactList.EditCommand}" CommandParameter="{Binding}" />
-                                    <MenuItem Text="DELETE" Command="{Binding MenuItemDeleteCommand}"/>
+                                    <MenuItem Text="DELETE" Command="{Binding MenuItemDeleteCommand}" CommandParameter="{Binding Id}"/>
                                 </ViewCell.ContextActions>
                             <ViewCell.View>
                                 <StackLayout Padding="0,10,0,10">

@@ -22,9 +22,10 @@ namespace FirstTry {
         private void ButtonSignIn(object sender, EventArgs e) {
             string pass = passwordEntry.Text;
             string login = loginEntry.Text;
-            var userWithLogin = GetUserWithLogin(login);
+            var userWithLogin = App.GetUserWithLogin(login);
             if (userWithLogin != null) {
                 if (userWithLogin.Password == pass) {
+                    App.logginedUser = userWithLogin;
                     var page = new MainListView();
                     NavigationPage.SetHasBackButton(page, false);
                     Navigation.PushAsync(page);
@@ -41,15 +42,15 @@ namespace FirstTry {
             }
         }
         //метод проверки логина (true or null)
-        private User GetUserWithLogin(string login) {
-            var users = App.Database.GetItems();
-            for (int i = 0; i < users.Count(); i++) {
-                var user = users.ElementAt(i);
-                if (user.Name == login)
-                    return user;
-            }
-            return null;
-        }
+        //private User GetUserWithLogin(string login) {
+        //    var users = App.Database.GetItems();
+        //    for (int i = 0; i < users.Count(); i++) {
+        //        var user = users.ElementAt(i);
+        //        if (user.Name == login)
+        //            return user;
+        //    }
+        //    return null;
+        //}
         // обработка нажатия кнопки добавления
         private async void CreateUser(object sender, EventArgs e) {
             User user = new User();

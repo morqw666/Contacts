@@ -39,11 +39,12 @@ namespace FirstTry {
             try {
                 // выбираем фото
                 var photo = await MediaPicker.PickPhotoAsync();
+
                 // загружаем в ImageView
                 img.Source = ImageSource.FromFile(photo.FullPath);
                 imgBtn.Source = img.Source;
             } catch (Exception ex) {
-                await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+                await DisplayAlert("Error", ex.Message, "OK");
             }
         }
         private async void TakePhotoAsync(object sender, EventArgs e) {
@@ -52,7 +53,7 @@ namespace FirstTry {
                     Title = $"xamarin.{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.png"
                 });
 
-                // для примера сохраняем файл в локальном хранилище
+                //сохраняем файл в локальном хранилище
                 var newFile = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
                 using (var stream = await photo.OpenReadAsync())
                 using (var newStream = File.OpenWrite(newFile))
@@ -69,6 +70,11 @@ namespace FirstTry {
             var contact = (Contact)BindingContext;
             DateTime thisDay = DateTime.Now;
             contact.Date = thisDay.ToString();
+            //var contacts = App.logginedUser.UserContacts.ToList();
+            //contacts.Add(contact.Id);
+            //App.logginedUser.UserContacts = contacts.ToArray();
+            contact.Creator = App.logginedUser.Name;
+            App.database.SaveItem(App.logginedUser);
             App.DatabaseContact.SaveItem(contact);
             Navigation.PopAsync();
         }

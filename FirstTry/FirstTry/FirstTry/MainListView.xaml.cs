@@ -12,12 +12,18 @@ using Xamarin.Forms.Xaml;
 
 using System.IO;
 
-namespace FirstTry {
+namespace FirstTry {    
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainListView : ContentPage {
         public MainListView() {
             InitializeComponent();
-            var listView = App.DatabaseContact.GetItems();
+            var listView = App.DatabaseContact.GetItems().ToList();
+            for (int i = listView.Count() - 1; i >= 0; i--) {
+                var contact = listView.ElementAt(i);
+                if (contact.Creator != App.logginedUser.Name) {
+                    listView.Remove(contact);
+                }
+            }
             contactList.ItemsSource = listView;
         }
         public ICommand MenuItemDeleteCommand => new Command(MenuItemDelete);
@@ -25,8 +31,6 @@ namespace FirstTry {
             Contact contact = contactObj as Contact;
             if (contact == null) return;
             App.DatabaseContact.DeleteItem(contact.Id);
-            //var contactobj = (CategoryItem)BindingContext;
-            //await App.DatabaseContact.DeleteItem(contact);
         }
         private async void OnClickAddProfile(object sender, EventArgs e) {
             Contact contact = new Contact();
