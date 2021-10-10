@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FirstTry.AddEditProfileView"
+             Title="Add Profile">
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Clicked="OnClickSaveContact" 
+                     Text="Save"
+                 IconImageSource="save.png"
+                 Order="Primary"
+                 Priority="0" />
+        
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+
+        <StackLayout Padding="15, 0, 15, 0" BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <ImageButton x:Name="imgBtn" HeightRequest="160" Clicked="BtnActionSheet_Clicked" Margin="0,15,0,30"  Source="avatarAdd.png" HorizontalOptions="Center"></ImageButton>
+            <Frame Padding="30,0,30,0" Margin="0,0,0,0" CornerRadius="0" HasShadow="False">
+                <Entry x:Name="NickNameEntry" Text="{Binding NickName}" Placeholder="NickName" FontSize="17"></Entry>
+            </Frame>
+            
+            <Frame Padding="30,0,30,50" CornerRadius="0" HasShadow="False">
+                <Entry x:Name="NameEntry" Text="{Binding FullName}" Placeholder="Name" FontSize="17"></Entry>
+            </Frame>
+
+            <Frame Padding="30,0,30,0" CornerRadius="0" HasShadow="False">
+                <Editor Text="{Binding Description}" Placeholder="Description" FontSize="17" BackgroundColor="#e6e6e6" HeightRequest="200" />
+            </Frame>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
