@@ -17,17 +17,17 @@ namespace FirstTry {
     public partial class MainListView : ContentPage {
         public MainListView() {
             InitializeComponent();
-            var listView = App.DatabaseContact.GetItems().ToList();
-            for (int i = listView.Count() - 1; i >= 0; i--) {
-                var contact = listView.ElementAt(i);
-                if (contact.Creator != App.logginedUser.Name) {
-                    listView.Remove(contact);
-                }
-            }
-            if (listView.Count() == 0) {
-                NoProfiles.IsVisible = true;
-            }
-            contactList.ItemsSource = listView;
+            //var listView = App.DatabaseContact.GetItems().ToList();
+            //for (int i = listView.Count() - 1; i >= 0; i--) {
+            //    var contact = listView.ElementAt(i);
+            //    if (contact.Creator != App.logginedUser.Name) {
+            //        listView.Remove(contact);
+            //    }
+            //}
+            //if (listView.Count() == 0) {
+            //    NoProfiles.IsVisible = true;
+            //}
+            //contactList.ItemsSource = listView;
         }
         public ICommand MenuItemDeleteCommand => new Command(MenuItemDelete);
         private void MenuItemDelete(object contactObj) {
@@ -47,6 +47,22 @@ namespace FirstTry {
             NavigationPage.SetHasBackButton(page, false);
             Navigation.PushAsync(page);
 
+        }
+        protected override void OnAppearing() {
+            base.OnAppearing();
+            var listView = App.DatabaseContact.GetItems().ToList();
+            for (int i = listView.Count() - 1; i >= 0; i--) {
+                var contact = listView.ElementAt(i);
+                if (contact.Id == 20) {
+                }
+                if (contact.Creator != App.logginedUser.Name) {
+                    listView.Remove(contact);
+                }
+            }
+            if (listView.Count() == 0) {
+                NoProfiles.IsVisible = true;
+            }
+            contactList.ItemsSource = listView;
         }
     }
 }

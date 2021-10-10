@@ -27,7 +27,7 @@
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <MenuItem Text="EDIT" Command="{Binding Path=contactList.EditCommand}" CommandParameter="{Binding}" />
-                                <MenuItem Text="DELETE" Command="{Binding MenuItemDeleteCommand}" CommandParameter="{Binding Id}" />
+                            <MenuItem Text="DELETE" Command="{Binding MenuItemDeleteCommand}" CommandParameter="{Binding Id}" />
                         </ViewCell.ContextActions>
                         <ViewCell.View>
                             <Grid Padding="15, 20, 15, 20">

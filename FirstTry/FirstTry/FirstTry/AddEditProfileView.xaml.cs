@@ -13,6 +13,7 @@ namespace FirstTry {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEditProfileView : ContentPage {
         Image img;
+        string photoPath;
         public AddEditProfileView() {
             InitializeComponent();
             img = new Image();
@@ -43,6 +44,7 @@ namespace FirstTry {
                 // загружаем в ImageView
                 img.Source = ImageSource.FromFile(photo.FullPath);
                 imgBtn.Source = img.Source;
+                photoPath = photo.FullPath;
             } catch (Exception ex) {
                 await DisplayAlert("Error", ex.Message, "OK");
             }
@@ -62,6 +64,7 @@ namespace FirstTry {
                 // загружаем в ImageView
                 img.Source = ImageSource.FromFile(photo.FullPath);
                 imgBtn.Source = img.Source;
+                photoPath = photo.FullPath;
             } catch (Exception ex) {
                 await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
             }
@@ -70,9 +73,8 @@ namespace FirstTry {
             var contact = (Contact)BindingContext;
             DateTime thisDay = DateTime.Now;
             contact.Date = thisDay.ToString();
-            //var contacts = App.logginedUser.UserContacts.ToList();
-            //contacts.Add(contact.Id);
-            //App.logginedUser.UserContacts = contacts.ToArray();
+            contact.Image = photoPath;
+            //contact.Image = imgBtn.ToString();
             contact.Creator = App.logginedUser.Name;
             App.database.SaveItem(App.logginedUser);
             App.DatabaseContact.SaveItem(contact);
