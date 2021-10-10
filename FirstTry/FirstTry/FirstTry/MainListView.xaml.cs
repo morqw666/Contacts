@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using System.Windows.Input;
+
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using System.IO;
 
 namespace FirstTry {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -14,6 +19,14 @@ namespace FirstTry {
             InitializeComponent();
             var listView = App.DatabaseContact.GetItems();
             contactList.ItemsSource = listView;
+        }
+        public ICommand MenuItemDeleteCommand => new Command(MenuItemDelete);
+        private void MenuItemDelete(object contactObj) {
+            Contact contact = contactObj as Contact;
+            if (contact == null) return;
+            App.DatabaseContact.DeleteItem(contact.Id);
+            //var contactobj = (CategoryItem)BindingContext;
+            //await App.DatabaseContact.DeleteItem(contact);
         }
         private async void OnClickAddProfile(object sender, EventArgs e) {
             Contact contact = new Contact();

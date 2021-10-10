@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,22 +12,59 @@ using Xamarin.Forms.Xaml;
 namespace FirstTry {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEditProfileView : ContentPage {
-        //Image img;
+        Image img;
         public AddEditProfileView() {
-            InitializeComponent();        
-            //img = new Image();
-
+            InitializeComponent();
+            img = new Image();
         }
-        //private async void GetPhotoAsync(object sender, EventArgs e) {
-        //    try {
-        //        // выбираем фото
-        //        var photo = await MediaPicker.PickPhotoAsync();
-        //        // загружаем в ImageView
-        //        img.Source = ImageSource.FromFile(photo.FullPath);
-        //    } catch (Exception ex) {
-        //        await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+        //ICommand CreateActionSheetCommand(bool useBottomSheet, bool cancel, int items, string message = null) {
+        //    return new Command(() => {
+        //        var cfg = new ActionSheetConfig()
+        //            .SetTitle("**** my Test Title ***")
+        //            .SetMessage(message)
+        //            .Add("Default", null, "emoji_cool_small.png")
+        //            .Add("E-Mail", null, "emoji_cool_small.png")
+        //            .SetUseBottomSheet(useBottomSheet);
         //    }
         //}
+        private async void BtnActionSheet_Clicked(object sender, System.EventArgs e) {
+            string option = await DisplayActionSheet("Choose option", "Cancel", "Hide", new string[] { "Get Photo", "Take Photo" });
+            if (option == "Get Photo") {
+                GetPhotoAsync(sender, e);
+            } else if (option == "Take Photo") {
+                TakePhotoAsync(sender, e);
+            }
+        }
+        private async void GetPhotoAsync(object sender, EventArgs e) {
+            try {
+                // выбираем фото
+                var photo = await MediaPicker.PickPhotoAsync();
+                // загружаем в ImageView
+                img.Source = ImageSource.FromFile(photo.FullPath);
+                imgBtn.Source = img.Source;
+            } catch (Exception ex) {
+                await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+            }
+        }
+        private async void TakePhotoAsync(object sender, EventArgs e) {
+            try {
+                var photo = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions {
+                    Title = $"xamarin.{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.png"
+                });
+
+                // для примера сохраняем файл в локальном хранилище
+                var newFile = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
+                using (var stream = await photo.OpenReadAsync())
+                using (var newStream = File.OpenWrite(newFile))
+                    await stream.CopyToAsync(newStream);
+
+                // загружаем в ImageView
+                img.Source = ImageSource.FromFile(photo.FullPath);
+                imgBtn.Source = img.Source;
+            } catch (Exception ex) {
+                await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+            }
+        }
         private void OnClickSaveContact(object sender, EventArgs e) {
             var contact = (Contact)BindingContext;
             DateTime thisDay = DateTime.Now;

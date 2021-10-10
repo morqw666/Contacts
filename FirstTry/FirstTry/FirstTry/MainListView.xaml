@@ -25,10 +25,9 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
-                            <MenuItem Text="EDIT"
-                                        Command="{Binding Path=contactList.EditCommand}" CommandParameter="{Binding}" />
-                            <MenuItem Text="DELETE"
-                                        Command="{Binding Source={x:Reference contactList}, Path=DeleteCommand}" CommandParameter="{Binding .}" />
+                            <MenuItem Text="EDIT" Command="{Binding Path=contactList.EditCommand}" CommandParameter="{Binding}" />
+                            <MenuItem Text="DELETE" Command="{Binding Source={x:Reference contactList}, Path=DeleteCommand}" CommandParameter="{Binding}" />
+                                <MenuItem Text="DELETE" Command="{Binding MenuItemDeleteCommand}" CommandParameter="{Binding}" />
                         </ViewCell.ContextActions>
                         <ViewCell.View>
                             <Grid Padding="15, 20, 15, 20" BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -74,9 +73,8 @@
                             <ViewCell.ContextActions>
                                 <MenuItem Text="EDIT"
                                         Command="{Binding Path=contactList.EditCommand}" CommandParameter="{Binding}" />
-                                <MenuItem Text="DELETE"
-                                        Command="{Binding Source={x:Reference contactList}, Path=DeleteCommand}" CommandParameter="{Binding .}" />
-                            </ViewCell.ContextActions>
+                                    <MenuItem Text="DELETE" Command="{Binding MenuItemDeleteCommand}"/>
+                                </ViewCell.ContextActions>
                             <ViewCell.View>
                                 <StackLayout Padding="0,10,0,10">
                                     <Label Text="{Binding NickName}" FontAttributes="Bold" FontSize="18" />
@@ -93,5 +91,6 @@
 
         <Button Grid.Row="0" Text="Add" Clicked="OnClickAddProfile" BorderColor="#000" BorderWidth="8" FontAttributes="Bold" BackgroundColor="#1e90ff" BorderRadius="40" TextColor="White" HorizontalOptions="End" WidthRequest="80" HeightRequest="80" Margin="0,0,20,22" VerticalOptions="End"/>
     </Grid>
-</ContentPage.Content>-->
+</ContentPage.Content>
+</ContentPage>-->
     

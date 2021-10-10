@@ -15,8 +15,7 @@
     <ContentPage.Content>
 
         <StackLayout Padding="15, 0, 15, 0" BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Margin="0,40,0,10" Source="avatarAdd.png" />
-            <!--<Button Clicked="GetPhotoAsync" Text="Get Photo"></Button>-->
+            <ImageButton x:Name="imgBtn" HeightRequest="160" Clicked="BtnActionSheet_Clicked" Margin="0,15,0,30"  Source="avatarAdd.png" HorizontalOptions="Center"></ImageButton>
             <Frame Padding="30,0,30,0" Margin="0,0,0,0" CornerRadius="0" HasShadow="False">
                 <Entry x:Name="NickNameEntry" Text="{Binding NickName}" Placeholder="NickName" FontSize="17"></Entry>
             </Frame>
