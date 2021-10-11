@@ -9,7 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FirstTry {
+namespace FirstTry.View {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEditProfileView : ContentPage {
         Image img;
@@ -29,7 +29,7 @@ namespace FirstTry {
         //    }
         //}
         private async void BtnActionSheet_Clicked(object sender, System.EventArgs e) {
-            string option = await DisplayActionSheet("Choose option", "Cancel", "Hide", new string[] { "Get Photo", "Take Photo" });
+            string option = await DisplayActionSheet("Choose option", "Cancel", null, new string[] { "Get Photo", "Take Photo" });
             if (option == "Get Photo") {
                 GetPhotoAsync(sender, e);
             } else if (option == "Take Photo") {

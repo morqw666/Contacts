@@ -17,17 +17,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="AddEditProfileView.xaml">
+    <EmbeddedResource Update="View\AddEditProfileView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FirstPage.xaml">
+    <EmbeddedResource Update="View\FirstPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="MainListView.xaml">
+    <EmbeddedResource Update="View\MainListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="SignUpView.xaml">
+    <EmbeddedResource Update="View\SignUpView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="View\FirstPageView.xaml.cs">
+      <DependentUpon>FirstPageView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
   </ItemGroup>
 </Project>

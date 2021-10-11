@@ -8,11 +8,12 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FirstTry {
+namespace FirstTry.View {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FirstPage : ContentPage {
-        public FirstPage() {
+    public partial class FirstPageView : ContentPage {
+        public FirstPageView() {
             InitializeComponent();
+            //BindingContext = new FirstPageViewModel();
         }
         public void GetLogin(string getLogin) {
             loginEntry.Text = getLogin;
@@ -41,17 +42,7 @@ namespace FirstTry {
                 DisplayAlert("Inavalid login", "Make sure login is correct", "OK");
             }
         }
-        //метод проверки логина (true or null)
-        //private User GetUserWithLogin(string login) {
-        //    var users = App.Database.GetItems();
-        //    for (int i = 0; i < users.Count(); i++) {
-        //        var user = users.ElementAt(i);
-        //        if (user.Name == login)
-        //            return user;
-        //    }
-        //    return null;
-        //}
-        // обработка нажатия кнопки добавления
+
         private async void CreateUser(object sender, EventArgs e) {
             User user = new User();
             SignUpView signUpView = new SignUpView();

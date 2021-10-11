@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FirstTry {
+namespace FirstTry.View {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpView : ContentPage {
         public SignUpView() {
@@ -35,7 +35,7 @@ namespace FirstTry {
                                 } else {
                                     App.Database.SaveItem(user);
                                     //Navigation.PopAsync();
-                                    var page = new FirstPage();
+                                    var page = new FirstPageView();
                                     page.GetLogin(login);
                                     NavigationPage.SetHasBackButton(page, false);
                                     Navigation.PushAsync(page);

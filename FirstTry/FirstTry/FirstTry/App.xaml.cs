@@ -53,10 +53,10 @@ namespace FirstTry {
                 var test = SecureStorage.GetAsync("userKey");
                 await test;
                 if (test.Result == null) {
-                    MainPage = new NavigationPage(new FirstPage());
+                    MainPage = new NavigationPage(new View.FirstPageView());
                 } else {
                     logginedUser = GetUserWithLogin(test.Result);
-                    MainPage = new NavigationPage(new MainListView());
+                    MainPage = new NavigationPage(new View.MainListView());
                 }
             } catch (Exception) {
             }

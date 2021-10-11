@@ -12,31 +12,24 @@ using Xamarin.Forms.Xaml;
 
 using System.IO;
 
-namespace FirstTry {    
+namespace FirstTry.View {    
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainListView : ContentPage {
-        //public ICommand MenuItemDeleteCommand { get; set; }
         public MainListView() {
             InitializeComponent();
-            //MenuItemDeleteCommand = new Command((object contactObj) => {
-            //    Contact contact = contactObj as Contact;
-            //    DisplayAlert("Info",contact.Id.ToString(),"OK");
-            //    if (contact == null) return;
-            //    App.DatabaseContact.DeleteItem(contact.Id);
-            //});
         }
-
-        //public ICommand MenuItemDeleteCommand => new Command(MenuItemDelete);
-        //private void MenuItemDelete(object contactObj) {
-        //    Contact contact = contactObj as Contact;
-        //    DisplayAlert("Info",contact.Id.ToString(),"OK");
-        //    if (contact == null) return;
-        //    App.DatabaseContact.DeleteItem(contact.Id);
-        //}
-        private void OnClickDelProfile(object sender, EventArgs e) {
-            Contact contact = sender as Contact;
+        public Command MenuItemDeleteCommand => new Command(OnDeleteCommand);
+        private async void OnDeleteCommand(object contactObj) {
+            Contact contact = new Contact();
+            contact.Id = Convert.ToInt32(contactObj);
             if (contact == null) return;
-            App.DatabaseContact.DeleteItem(contact.Id);
+            string option = await DisplayActionSheet("Confirm your actions", null, null, new string[] { "Delete Contact", "Cancel" });
+            if (option == "Delete Contact") {
+                App.DatabaseContact.DeleteItem(contact.Id);
+            } else if (option == "Cancel") {
+                return;
+            }
+            OnAppearing();
         }
         private async void OnClickAddProfile(object sender, EventArgs e) {
             Contact contact = new Contact();
@@ -46,13 +39,14 @@ namespace FirstTry {
         }
         private void OnClickLogOut(object sender, EventArgs e) {
             SecureStorage.Remove("userKey");
-            var page = new FirstPage();
+            var page = new FirstPageView();
             NavigationPage.SetHasBackButton(page, false);
             Navigation.PushAsync(page);
 
         }
         protected override void OnAppearing() {
             base.OnAppearing();
+            BindingContext = this;
             var listView = App.DatabaseContact.GetItems().ToList();
             for (int i = listView.Count() - 1; i >= 0; i--) {
                 var contact = listView.ElementAt(i);
