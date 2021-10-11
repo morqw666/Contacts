@@ -28,6 +28,9 @@ namespace FirstTry.View {
         //            .SetUseBottomSheet(useBottomSheet);
         //    }
         //}
+        public void GetContact(Contact contact) {
+            imgBtn.Source = contact.Image.ToString();
+        }
         private async void BtnActionSheet_Clicked(object sender, System.EventArgs e) {
             string option = await DisplayActionSheet("Choose option", "Cancel", null, new string[] { "Get Photo", "Take Photo" });
             if (option == "Get Photo") {

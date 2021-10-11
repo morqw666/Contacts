@@ -24,7 +24,7 @@
             </Frame>
 
             <Frame Padding="30,0,30,0" CornerRadius="0" HasShadow="False">
-                <Editor Text="{Binding Description}" Placeholder="Description" FontSize="17" BackgroundColor="#e6e6e6" HeightRequest="200" />
+                <Editor x:Name="Description" Text="{Binding Description}" Placeholder="Description" FontSize="17" BackgroundColor="#e6e6e6" HeightRequest="200" />
             </Frame>
             
         </StackLayout>

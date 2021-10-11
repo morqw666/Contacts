@@ -27,8 +27,8 @@
                         <ViewCell>
                             <ViewCell.ContextActions>
                                 <MenuItem Text="EDIT" 
-                                          Command="{Binding Path=contactList.EditCommand}" 
-                                          CommandParameter="{Binding}" />
+                                          Command="{Binding Path=BindingContext.MenuItemEditCommand, Source={x:Reference contactList}}" 
+                                          CommandParameter="{Binding Id}" />
                                 <MenuItem Text="DELETE" 
                                           IsDestructive="True" 
                                           Command="{Binding Path=BindingContext.MenuItemDeleteCommand, Source={x:Reference contactList}}" 

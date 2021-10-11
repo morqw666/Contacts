@@ -19,6 +19,7 @@ namespace FirstTry.View {
             InitializeComponent();
         }
         public Command MenuItemDeleteCommand => new Command(OnDeleteCommand);
+        public Command MenuItemEditCommand => new Command(OnEditCommand);
         private async void OnDeleteCommand(object contactObj) {
             Contact contact = new Contact();
             contact.Id = Convert.ToInt32(contactObj);
@@ -30,6 +31,15 @@ namespace FirstTry.View {
                 return;
             }
             OnAppearing();
+        }
+        private async void OnEditCommand(object contactObj) {
+            Contact contact = new Contact();
+            int contactID = Convert.ToInt32(contactObj);
+            contact = App.DatabaseContact.GetItem(contactID);
+            var page = new AddEditProfileView();
+            page.BindingContext = contact;
+            page.GetContact(contact);
+            await Navigation.PushAsync(page);
         }
         private async void OnClickAddProfile(object sender, EventArgs e) {
             Contact contact = new Contact();

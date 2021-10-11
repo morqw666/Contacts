@@ -34,7 +34,6 @@ namespace FirstTry.View {
                                     DisplayAlert("Ivalid login", "Please choose another one", "OK");
                                 } else {
                                     App.Database.SaveItem(user);
-                                    //Navigation.PopAsync();
                                     var page = new FirstPageView();
                                     page.GetLogin(login);
                                     NavigationPage.SetHasBackButton(page, false);
