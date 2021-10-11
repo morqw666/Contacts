@@ -15,23 +15,26 @@ using System.IO;
 namespace FirstTry {    
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainListView : ContentPage {
+        //public ICommand MenuItemDeleteCommand { get; set; }
         public MainListView() {
             InitializeComponent();
-            //var listView = App.DatabaseContact.GetItems().ToList();
-            //for (int i = listView.Count() - 1; i >= 0; i--) {
-            //    var contact = listView.ElementAt(i);
-            //    if (contact.Creator != App.logginedUser.Name) {
-            //        listView.Remove(contact);
-            //    }
-            //}
-            //if (listView.Count() == 0) {
-            //    NoProfiles.IsVisible = true;
-            //}
-            //contactList.ItemsSource = listView;
+            //MenuItemDeleteCommand = new Command((object contactObj) => {
+            //    Contact contact = contactObj as Contact;
+            //    DisplayAlert("Info",contact.Id.ToString(),"OK");
+            //    if (contact == null) return;
+            //    App.DatabaseContact.DeleteItem(contact.Id);
+            //});
         }
-        public ICommand MenuItemDeleteCommand => new Command(MenuItemDelete);
-        private void MenuItemDelete(object contactObj) {
-            Contact contact = contactObj as Contact;
+
+        //public ICommand MenuItemDeleteCommand => new Command(MenuItemDelete);
+        //private void MenuItemDelete(object contactObj) {
+        //    Contact contact = contactObj as Contact;
+        //    DisplayAlert("Info",contact.Id.ToString(),"OK");
+        //    if (contact == null) return;
+        //    App.DatabaseContact.DeleteItem(contact.Id);
+        //}
+        private void OnClickDelProfile(object sender, EventArgs e) {
+            Contact contact = sender as Contact;
             if (contact == null) return;
             App.DatabaseContact.DeleteItem(contact.Id);
         }
@@ -53,14 +56,14 @@ namespace FirstTry {
             var listView = App.DatabaseContact.GetItems().ToList();
             for (int i = listView.Count() - 1; i >= 0; i--) {
                 var contact = listView.ElementAt(i);
-                if (contact.Id == 20) {
-                }
                 if (contact.Creator != App.logginedUser.Name) {
                     listView.Remove(contact);
                 }
             }
             if (listView.Count() == 0) {
                 NoProfiles.IsVisible = true;
+            } else if (listView.Count() != 0 ) {
+                NoProfiles.IsVisible = false;
             }
             contactList.ItemsSource = listView;
         }

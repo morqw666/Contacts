@@ -73,8 +73,11 @@ namespace FirstTry {
             var contact = (Contact)BindingContext;
             DateTime thisDay = DateTime.Now;
             contact.Date = thisDay.ToString();
-            contact.Image = photoPath;
-            //contact.Image = imgBtn.ToString();
+            if (photoPath == null) {
+                contact.Image = "avatar.png";
+            } else {
+                contact.Image = photoPath;
+            }
             contact.Creator = App.logginedUser.Name;
             App.database.SaveItem(App.logginedUser);
             App.DatabaseContact.SaveItem(contact);
