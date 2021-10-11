@@ -18,8 +18,8 @@ namespace FirstTry.View {
         public MainListView() {
             InitializeComponent();
         }
-        public Command MenuItemDeleteCommand => new Command(OnDeleteCommand);
-        public Command MenuItemEditCommand => new Command(OnEditCommand);
+        public ICommand MenuItemDeleteCommand => new Command(OnDeleteCommand);
+        public ICommand MenuItemEditCommand => new Command(OnEditCommand);
         private async void OnDeleteCommand(object contactObj) {
             Contact contact = new Contact();
             contact.Id = Convert.ToInt32(contactObj);

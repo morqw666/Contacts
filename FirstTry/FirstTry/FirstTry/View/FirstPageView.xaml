@@ -13,15 +13,15 @@
         <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             
             <Frame Padding="40,0,40,0" Margin="0,150,0,0" CornerRadius="0" HasShadow="False">
-                <Entry x:Name="loginEntry" Placeholder="Login" FontSize="17"></Entry>
+                <Entry x:Name="loginEntry" Text="{Binding Name}" Placeholder="Login" FontSize="17"></Entry>
             </Frame>
             
             <Frame Padding="40,0,40,0" CornerRadius="0" HasShadow="False">
-                <Entry x:Name="passwordEntry" Placeholder="Password" FontSize="17" IsPassword="true"></Entry>
+                <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" FontSize="17" IsPassword="true"></Entry>
             </Frame>
-            
-            <Button Text="SIGN IN" Clicked="ButtonSignIn" IsEnabled="False" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand">
-                <Button.Triggers>
+
+            <Button Text="SIGN IN" Command="{Binding SignIn}" IsEnabled="{Binding LoginAllowed}" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand">
+                <!--<Button.Triggers>
                     <MultiTrigger TargetType="Button">
                         <MultiTrigger.Conditions>
                             <BindingCondition Binding="{Binding Source={x:Reference loginEntry},
@@ -35,10 +35,10 @@
                         </MultiTrigger.Conditions>
                         <Setter Property="IsEnabled" Value="True" />
                     </MultiTrigger>
-                </Button.Triggers>
+                </Button.Triggers>-->
             </Button>
 
-            <Button Text="SIGN UP" Clicked="CreateUser" BackgroundColor="Transparent" FontSize="17" TextColor="Blue"></Button>
+            <Button Text="SIGN UP" Command="{Binding SignUp}" BackgroundColor="Transparent" FontSize="17" TextColor="Blue"></Button>
         
         </StackLayout>
     </ContentPage.Content>

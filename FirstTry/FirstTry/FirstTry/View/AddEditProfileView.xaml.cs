@@ -18,23 +18,13 @@ namespace FirstTry.View {
             InitializeComponent();
             img = new Image();
         }
-        //ICommand CreateActionSheetCommand(bool useBottomSheet, bool cancel, int items, string message = null) {
-        //    return new Command(() => {
-        //        var cfg = new ActionSheetConfig()
-        //            .SetTitle("**** my Test Title ***")
-        //            .SetMessage(message)
-        //            .Add("Default", null, "emoji_cool_small.png")
-        //            .Add("E-Mail", null, "emoji_cool_small.png")
-        //            .SetUseBottomSheet(useBottomSheet);
-        //    }
-        //}
         public void GetContact(Contact contact) {
             if (contact.Image == "avatar.png") {
                 imgBtn.Source = "avatarAdd.png";
             } else {
                 imgBtn.Source = contact.Image.ToString();
             }
-            DisplayAlert("INFO", imgBtn.Source.ToString(), "OK");
+            //DisplayAlert("INFO", imgBtn.Source.ToString(), "OK");
         }
         private async void BtnActionSheet_Clicked(object sender, System.EventArgs e) {
             string option;
@@ -43,7 +33,6 @@ namespace FirstTry.View {
             } else {
                 option = await DisplayActionSheet("Choose option", "Cancel", null, new string[] { "Get Photo", "Take Photo", "Remove Photo" });
             }
-            //string option = await DisplayActionSheet("Choose option", "Cancel", null, new string[] { "Get Photo", "Take Photo", "Remove Photo" });
             if (option == "Get Photo") {
                 GetPhotoAsync(sender, e);
             } else if (option == "Take Photo") {
@@ -89,10 +78,12 @@ namespace FirstTry.View {
             var contact = (Contact)BindingContext;
             DateTime thisDay = DateTime.Now;
             contact.Date = thisDay.ToString();
-            if (photoPath == null) {
+            if (imgBtn.Source.ToString() == "File: avatarAdd.png") {
                 contact.Image = "avatar.png";
-            } else {
+            } else if (photoPath != null) {
                 contact.Image = photoPath;
+            } else {
+                imgBtn.Source = contact.Image.ToString();
             }
             contact.Creator = App.logginedUser.Name;
             App.database.SaveItem(App.logginedUser);
