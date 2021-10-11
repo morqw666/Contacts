@@ -29,14 +29,27 @@ namespace FirstTry.View {
         //    }
         //}
         public void GetContact(Contact contact) {
-            imgBtn.Source = contact.Image.ToString();
+            if (contact.Image == "avatar.png") {
+                imgBtn.Source = "avatarAdd.png";
+            } else {
+                imgBtn.Source = contact.Image.ToString();
+            }
+            DisplayAlert("INFO", imgBtn.Source.ToString(), "OK");
         }
         private async void BtnActionSheet_Clicked(object sender, System.EventArgs e) {
-            string option = await DisplayActionSheet("Choose option", "Cancel", null, new string[] { "Get Photo", "Take Photo" });
+            string option;
+            if (imgBtn.Source.ToString() == "File: avatarAdd.png") {
+                option = await DisplayActionSheet("Choose option", "Cancel", null, new string[] { "Get Photo", "Take Photo"});
+            } else {
+                option = await DisplayActionSheet("Choose option", "Cancel", null, new string[] { "Get Photo", "Take Photo", "Remove Photo" });
+            }
+            //string option = await DisplayActionSheet("Choose option", "Cancel", null, new string[] { "Get Photo", "Take Photo", "Remove Photo" });
             if (option == "Get Photo") {
                 GetPhotoAsync(sender, e);
             } else if (option == "Take Photo") {
                 TakePhotoAsync(sender, e);
+            } else if (option == "Remove Photo") {
+                imgBtn.Source = "avatarAdd.png";
             }
         }
         private async void GetPhotoAsync(object sender, EventArgs e) {
