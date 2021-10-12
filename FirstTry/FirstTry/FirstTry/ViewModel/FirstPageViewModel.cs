@@ -71,10 +71,6 @@ namespace FirstTry.ViewModel {
         }
         public bool LoginAllowed => !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Password);
         public async void OnPageSignUp() {
-            //User user = new User();
-            //SignUpView signUpView = new SignUpView();
-            //signUpView.BindingContext = user;
-            //await Navigation.PushAsync(signUpView);
             await Navigation.PushAsync(new SignUpView());
         }
         protected void OnPropertyChanged(string propName) {

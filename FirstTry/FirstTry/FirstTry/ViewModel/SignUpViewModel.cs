@@ -52,7 +52,6 @@ namespace FirstTry.ViewModel {
             }
         }
         public void OnSignUp() {
-            user = new User();
             string login = Name;
             string pass = Password;
             string confPass = ConfirmPassword;
