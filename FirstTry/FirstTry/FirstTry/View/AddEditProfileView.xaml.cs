@@ -24,7 +24,6 @@ namespace FirstTry.View {
             } else {
                 imgBtn.Source = contact.Image.ToString();
             }
-            //DisplayAlert("INFO", imgBtn.Source.ToString(), "OK");
         }
         private async void BtnActionSheet_Clicked(object sender, System.EventArgs e) {
             string option;
@@ -59,13 +58,11 @@ namespace FirstTry.View {
                 var photo = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions {
                     Title = $"xamarin.{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.png"
                 });
-
                 //сохраняем файл в локальном хранилище
                 var newFile = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
                 using (var stream = await photo.OpenReadAsync())
                 using (var newStream = File.OpenWrite(newFile))
                     await stream.CopyToAsync(newStream);
-
                 // загружаем в ImageView
                 img.Source = ImageSource.FromFile(photo.FullPath);
                 imgBtn.Source = img.Source;

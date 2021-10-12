@@ -4,8 +4,8 @@
              x:Class="FirstTry.View.MainListView"
              Title="Main List">
     <ContentPage.ToolbarItems>
-
-        <ToolbarItem Clicked="OnClickLogOut" 
+        <!--Clicked="OnClickLogOut"-->
+        <ToolbarItem Command="{Binding LogOut}" 
                      Text="LogOut"
                  IconImageSource="logout.png"
                  Order="Primary"
@@ -18,10 +18,11 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid BackgroundColor="#fff">
-            <Label x:Name="NoProfiles" IsVisible="false" FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">No profiles added</Label>
+            <Label IsVisible="{Binding IsVisible}" FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">No profiles added</Label>
             <ListView x:Name="contactList"
-                          HasUnevenRows="True"
-                            ItemsSource="{Binding Contact}">
+                            HasUnevenRows="True"
+                            RefreshCommand="{Binding Refresh}"
+                            ItemsSource="{Binding Contacts}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -55,8 +56,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Add" Clicked="OnClickAddProfile" BorderColor="#000" BorderWidth="8" FontAttributes="Bold" BackgroundColor="#1e90ff" BorderRadius="40" TextColor="White" HorizontalOptions="End" WidthRequest="80" HeightRequest="80" Margin="0,0,20,22" VerticalOptions="End"/>
-        </Grid>
+            <Button Text="Add" Command="{Binding ButtoneAddProfile}" BorderColor="#000" BorderWidth="8" FontAttributes="Bold" BackgroundColor="#1e90ff" BorderRadius="40" TextColor="White" HorizontalOptions="End" WidthRequest="80" HeightRequest="80" Margin="0,0,20,22" VerticalOptions="End"/>
+        </Grid> <!--Clicked="OnClickAddProfile"-->
     </ContentPage.Content>
 </ContentPage>
     

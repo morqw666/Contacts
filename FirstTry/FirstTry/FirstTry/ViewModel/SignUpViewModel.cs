@@ -41,11 +41,12 @@ namespace FirstTry.ViewModel {
                 }
             }
         }
+        private string _ConfirmPassword;
         public string ConfirmPassword {
-            get { return user.ConfirmPassword; }
+            get { return _ConfirmPassword; }
             set {
-                if (user.ConfirmPassword != value) {
-                    user.ConfirmPassword = value;
+                if (_ConfirmPassword != value) {
+                    _ConfirmPassword = value;
                     OnPropertyChanged("ConfirmPassword");
                     OnPropertyChanged(nameof(LoginAllowed));
                 }

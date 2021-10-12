@@ -59,7 +59,6 @@ namespace FirstTry.ViewModel {
                     UserDialogs.Instance.Alert(new AlertConfig() {
                         Title = "Invalid Password",
                         Message = "Make sure password is correct"
-
                     });
                 }
             } else {
