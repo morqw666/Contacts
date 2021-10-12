@@ -34,6 +34,7 @@ namespace FirstTry {
         }
         public App() {
             InitializeComponent();
+            //MainPage = new NavigationPage(new View.SignUpView());
             LoadFirstPage();
             //MainPage = new NavigationPage( new FirstPage());
         }

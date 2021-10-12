@@ -4,14 +4,14 @@
              xmlns:local="clr-namespace:FirstTry;assembly=FirstTry"
              x:Class="FirstTry.View.SignUpView"
              Title="Users SingUp">
-        <ContentPage.Resources>
-            <ResourceDictionary>
-                <local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
-            </ResourceDictionary>
-        </ContentPage.Resources>
-        <ContentPage.Content>
-        
-            <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Content>
+    
+        <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             
             <Frame Padding="40,0,40,0" Margin="0,150,0,0" CornerRadius="0" HasShadow="False">
                 <Entry x:Name="loginEntry" Text="{Binding Name}" Placeholder="Login" FontSize="17"></Entry>
@@ -22,11 +22,11 @@
             </Frame>
             
             <Frame Padding="40,0,40,0" CornerRadius="0" HasShadow="False">
-                <Entry x:Name="confirmPasswordEntry" Text="" Placeholder="Confirm Password" FontSize="17" IsPassword="true"></Entry>
+                <Entry x:Name="confirmPasswordEntry" Text="{Binding ConfirmPassword}" Placeholder="Confirm Password" FontSize="17" IsPassword="true"></Entry>
             </Frame>
 
-            <Button x:Name="ButtoneSignUp" IsEnabled="False" Text="SIGN UP" Clicked="SaveUser" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand">
-                <Button.Triggers>
+            <Button Text="SIGN UP" Command="{Binding SignUp}" IsEnabled="{Binding LoginAllowed}" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand">
+                <!--<Button.Triggers>
                     <MultiTrigger TargetType="Button">
                         <MultiTrigger.Conditions>
                             <BindingCondition Binding="{Binding Source={x:Reference loginEntry},
@@ -44,7 +44,7 @@
                         </MultiTrigger.Conditions>
                         <Setter Property="IsEnabled" Value="True" />
                     </MultiTrigger>
-                </Button.Triggers>
+                </Button.Triggers>-->
             </Button>
         </StackLayout>
     </ContentPage.Content>

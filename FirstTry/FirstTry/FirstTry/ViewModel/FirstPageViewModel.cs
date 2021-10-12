@@ -12,15 +12,15 @@ namespace FirstTry.ViewModel {
     public class FirstPageViewModel : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand SignIn { get; private set; }
-        public ICommand SignUp { get; private set; }
+        public ICommand PageSignUp { get; private set; }
         public User user { get; private set; }
         public readonly INavigation Navigation;
         public FirstPageViewModel(INavigation navigation) {
             SignIn = new Command(OnSignIn);
-            SignUp = new Command(OnSignUp);
+            PageSignUp = new Command(OnPageSignUp);
             user = new User();
             Navigation = navigation;
-    }
+        }
         public string Name {
             get { return user.Name; }
             set {
@@ -70,11 +70,12 @@ namespace FirstTry.ViewModel {
             }
         }
         public bool LoginAllowed => !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Password);
-        public async void OnSignUp() {
-            User user = new User();
-            SignUpView signUpView = new SignUpView();
-            signUpView.BindingContext = user;
-            await Navigation.PushAsync(signUpView);
+        public async void OnPageSignUp() {
+            //User user = new User();
+            //SignUpView signUpView = new SignUpView();
+            //signUpView.BindingContext = user;
+            //await Navigation.PushAsync(signUpView);
+            await Navigation.PushAsync(new SignUpView());
         }
         protected void OnPropertyChanged(string propName) {
             if (PropertyChanged != null)

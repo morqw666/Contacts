@@ -4,11 +4,11 @@
              xmlns:local="clr-namespace:FirstTry;assembly=FirstTry"
              x:Class="FirstTry.View.FirstPageView"
              Title="Users SignIn">
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
             <local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
     <ContentPage.Content>
         <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             
@@ -38,7 +38,7 @@
                 </Button.Triggers>-->
             </Button>
 
-            <Button Text="SIGN UP" Command="{Binding SignUp}" BackgroundColor="Transparent" FontSize="17" TextColor="Blue"></Button>
+            <Button Text="SIGN UP" Command="{Binding PageSignUp}" BackgroundColor="Transparent" FontSize="17" TextColor="Blue"></Button>
         
         </StackLayout>
     </ContentPage.Content>
