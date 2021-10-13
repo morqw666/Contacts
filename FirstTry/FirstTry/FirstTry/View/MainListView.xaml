@@ -4,25 +4,13 @@
              x:Class="FirstTry.View.MainListView"
              Title="Main List">
     <ContentPage.ToolbarItems>
-        <!--Clicked="OnClickLogOut"-->
-        <ToolbarItem Command="{Binding LogOut}" 
-                     Text="LogOut"
-                 IconImageSource="logout.png"
-                 Order="Primary"
-                 Priority="0" />
-        <ToolbarItem Text="Settings"
-                 IconImageSource="settings.png"
-                 Order="Primary"
-                 Priority="0" />
-
+        <ToolbarItem Command="{Binding LogOut}" Text="LogOut" IconImageSource="logout.png" Order="Primary" Priority="0" />
+        <ToolbarItem Text="Settings" IconImageSource="settings.png" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid BackgroundColor="#fff">
             <Label IsVisible="{Binding IsVisible}" FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">No profiles added</Label>
-            <ListView x:Name="contactList"
-                            HasUnevenRows="True"
-                            RefreshCommand="{Binding Refresh}"
-                            ItemsSource="{Binding Contacts}">
+            <ListView x:Name="contactList" HasUnevenRows="True" RefreshCommand="{Binding Refresh}" ItemsSource="{Binding Contacts}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -57,46 +45,6 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button Text="Add" Command="{Binding ButtoneAddProfile}" BorderColor="#000" BorderWidth="8" FontAttributes="Bold" BackgroundColor="#1e90ff" BorderRadius="40" TextColor="White" HorizontalOptions="End" WidthRequest="80" HeightRequest="80" Margin="0,0,20,22" VerticalOptions="End"/>
-        </Grid> <!--Clicked="OnClickAddProfile"-->
+        </Grid>
     </ContentPage.Content>
-</ContentPage>
-    
-
-
-<!--<ContentPage.Content>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <StackLayout Padding="15, 0, 15, 0" BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <ListView x:Name="contactList"
-                      HasUnevenRows="True"
-                        ItemsSource="{Binding Contact}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem Text="EDIT"
-                                        Command="{Binding Path=contactList.EditCommand}" CommandParameter="{Binding}" />
-                                    <MenuItem Text="DELETE" Command="{Binding MenuItemDeleteCommand}" CommandParameter="{Binding Id}"/>
-                                </ViewCell.ContextActions>
-                            <ViewCell.View>
-                                <StackLayout Padding="0,10,0,10">
-                                    <Label Text="{Binding NickName}" FontAttributes="Bold" FontSize="18" />
-                                    <Label Text="{Binding FullName}" />
-                                    <Label Text="{Binding Date}" FontAttributes="Italic"/>
-                                </StackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-
-
-        <Button Grid.Row="0" Text="Add" Clicked="OnClickAddProfile" BorderColor="#000" BorderWidth="8" FontAttributes="Bold" BackgroundColor="#1e90ff" BorderRadius="40" TextColor="White" HorizontalOptions="End" WidthRequest="80" HeightRequest="80" Margin="0,0,20,22" VerticalOptions="End"/>
-    </Grid>
-</ContentPage.Content>
-</ContentPage>-->
-    
+</ContentPage>    

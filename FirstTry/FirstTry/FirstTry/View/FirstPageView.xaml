@@ -1,45 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:FirstTry;assembly=FirstTry"
              x:Class="FirstTry.View.FirstPageView"
              Title="Users SignIn">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            
-            <Frame Padding="40,0,40,0" Margin="0,150,0,0" CornerRadius="0" HasShadow="False">
-                <Entry x:Name="loginEntry" Text="{Binding Name}" Placeholder="Login" FontSize="17"></Entry>
-            </Frame>
-            
-            <Frame Padding="40,0,40,0" CornerRadius="0" HasShadow="False">
-                <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" FontSize="17" IsPassword="true"></Entry>
-            </Frame>
-
-            <Button Text="SIGN IN" Command="{Binding SignIn}" IsEnabled="{Binding LoginAllowed}" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand">
-                <!--<Button.Triggers>
-                    <MultiTrigger TargetType="Button">
-                        <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference loginEntry},
-                              Path=Text.Length,
-                               Converter={StaticResource dataHasBeenEntered}}"
-                               Value="true" />
-                            <BindingCondition Binding="{Binding Source={x:Reference passwordEntry},
-                              Path=Text.Length,
-                              Converter={StaticResource dataHasBeenEntered}}"
-                              Value="true" />
-                        </MultiTrigger.Conditions>
-                        <Setter Property="IsEnabled" Value="True" />
-                    </MultiTrigger>
-                </Button.Triggers>-->
-            </Button>
-
-            <Button Text="SIGN UP" Command="{Binding PageSignUp}" BackgroundColor="Transparent" FontSize="17" TextColor="Blue"></Button>
-        
+            <StackLayout BackgroundColor="#fff" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <Frame Padding="40,0,40,0" Margin="0,150,0,0" CornerRadius="0" HasShadow="False">
+                    <Entry x:Name="loginEntry" Text="{Binding Name}" Placeholder="Login" FontSize="17"></Entry>
+                </Frame>
+                <Frame Padding="40,0,40,0" CornerRadius="0" HasShadow="False">
+                    <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="Password" FontSize="17" IsPassword="true"></Entry>
+                </Frame>
+                <Button Text="SIGN IN" Command="{Binding SignIn}" IsEnabled="{Binding LoginAllowed}" FontAttributes="Bold" BackgroundColor="#d3691f" BorderWidth="1" BorderColor="#000" Padding="13" Margin="40,200,40,0" FontSize="17" HorizontalOptions="FillAndExpand"/>
+                <Button Text="SIGN UP" Command="{Binding PageSignUp}" BackgroundColor="Transparent" FontSize="17" TextColor="Blue"></Button>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

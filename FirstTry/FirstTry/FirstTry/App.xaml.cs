@@ -34,9 +34,7 @@ namespace FirstTry {
         }
         public App() {
             InitializeComponent();
-            //MainPage = new NavigationPage(new View.SignUpView());
             LoadFirstPage();
-            //MainPage = new NavigationPage( new FirstPage());
         }
 
         protected override void OnStart() {
@@ -48,7 +46,6 @@ namespace FirstTry {
         protected override void OnResume() {
         }
 
-        //метод проверки ключа залогиненого юзера
         private async void LoadFirstPage() {
             try {
                 var test = SecureStorage.GetAsync("userKey");

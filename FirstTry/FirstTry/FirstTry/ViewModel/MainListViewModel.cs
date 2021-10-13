@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using FirstTry.View;
@@ -68,16 +67,11 @@ namespace FirstTry.ViewModel {
             Contact contact = new Contact();
             int contactID = Convert.ToInt32(contactObj);
             contact = App.DatabaseContact.GetItem(contactID);
-            var page = new AddEditProfileView();
-            page.BindingContext = contact;
-            page.GetContact(contact);
+            var page = new AddEditProfileView(contact);
             await Navigation.PushAsync(page);
         }
-        private async void OnAddProfile() {
-            Contact contact = new Contact();
-            AddEditProfileView addEditProfileView = new AddEditProfileView();
-            addEditProfileView.BindingContext = contact;
-            await Navigation.PushAsync(addEditProfileView);
+        private void OnAddProfile() {
+            Navigation.PushAsync(new AddEditProfileView());
         }
         private void OnLogOut() {
             SecureStorage.Remove("userKey");

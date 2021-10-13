@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 using FirstTry.View;
-using Xamarin.Essentials;
 using Acr.UserDialogs;
 using System.Text.RegularExpressions;
 using System.Linq;
@@ -111,7 +107,6 @@ namespace FirstTry.ViewModel {
                 });
             }
         }
-        //метод проверки логина
         private bool CheckLoginExists(string login) {
             var items = App.Database.GetItems();
             for (int i = 0; i < items.Count(); i++) {
