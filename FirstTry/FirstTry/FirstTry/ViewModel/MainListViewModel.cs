@@ -15,6 +15,7 @@ namespace FirstTry.ViewModel {
         public ICommand MenuItemEditCommand { get; private set; }
         public ICommand ButtoneAddProfile { get; private set; }
         public ICommand LogOut { get; private set; }
+        public ICommand Settings { get; private set; }
         public ICommand Refresh { get; private set; }
         public readonly INavigation Navigation;
         public MainListViewModel(INavigation navigation) {
@@ -22,6 +23,7 @@ namespace FirstTry.ViewModel {
             MenuItemEditCommand = new Command(OnEditCommand);
             ButtoneAddProfile = new Command(OnAddProfile);
             LogOut = new Command(OnLogOut);
+            Settings = new Command(OnSettings);
             Refresh = new Command(OnRefresh); 
             Navigation = navigation;
             OnRefresh();
@@ -38,7 +40,23 @@ namespace FirstTry.ViewModel {
                     listView.Remove(contact);
                 }
             }
-            Contacts = listView;
+            //сортировка по FullName
+            //var sortedByFullName = from con in listView
+            //               orderby con.FullName
+            //               select con;
+            //List<Contact> profiles = new List<Contact>();
+            //foreach (Contact fullName in sortedByFullName) {
+            //    profiles.Add(fullName);
+            //}
+            //сортировка по NickName
+            var sortedByNickName = from con in listView
+                                   orderby con.NickName
+                                   select con;
+            List<Contact> profiles = new List<Contact>();
+            foreach (Contact NickName in sortedByNickName) {
+                profiles.Add(NickName);
+            }
+            Contacts = profiles;
         }
         private List<Contact> _contacts = new List<Contact>();
         public List<Contact> Contacts {
@@ -78,6 +96,9 @@ namespace FirstTry.ViewModel {
             var page = new FirstPageView();
             NavigationPage.SetHasBackButton(page, false);
             Navigation.PushAsync(page);
+        }
+        private void OnSettings() {
+            Navigation.PushAsync(new SettingsView());
         }
         protected void OnPropertyChanged(string propName) {
             if (PropertyChanged != null)

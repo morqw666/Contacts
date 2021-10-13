@@ -5,7 +5,7 @@
              Title="Main List">
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding LogOut}" Text="LogOut" IconImageSource="logout.png" Order="Primary" Priority="0" />
-        <ToolbarItem Text="Settings" IconImageSource="settings.png" Order="Primary" Priority="0" />
+        <ToolbarItem Command="{Binding Settings}" Text="Settings" IconImageSource="settings.png" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid BackgroundColor="#fff">

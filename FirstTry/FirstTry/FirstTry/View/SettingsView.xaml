@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FirstTry.View.SettingsView"
+             Title="Settings">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="Start">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.6*" />
+                        <ColumnDefinition Width="0.4*" />
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="1" Margin="10,20,20,20" CornerRadius="10" OutlineColor="#C0C0C0">
+                        <StackLayout VerticalOptions="Center">
+                            <Label Grid.Column="0" Padding="0,0,0,10" FontSize="18" TextColor="#000" Text="Dark theme" ></Label>
+                            <Switch Grid.Column="1" IsToggled="False" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="0" Margin="20,20,10,20" CornerRadius="10" OutlineColor="#C0C0C0">
+                        <StackLayout>
+                            <Label Padding="0,0,0,10" FontSize="18" TextColor="#000" Text="Sorting contacts by" />
+                            <RadioButton GroupName="Sorting" Content="Date" IsChecked="true" />
+                            <RadioButton GroupName="Sorting" Content="NickName" />
+                            <RadioButton GroupName="Sorting" Content="Name" />
+                        </StackLayout> <!--CheckedChanged="RadioButton_Cheked"-->
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
