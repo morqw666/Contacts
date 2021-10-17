@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FirstTry;assembly=FirstTry"
+             x:Class="FirstTry.View.AddEditProfileView"
+             Title="Add Profile">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SaveContact}"
+                     Text="Save"
+                 IconImageSource="save.png"
+                 Order="Primary"
+                 Priority="0"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#fff" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout Padding="15, 0, 15, 0" BackgroundColor="#fff" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <ImageButton x:Name="imgBtn" HeightRequest="160" Command="{Binding ImgActionSheet}" Margin="0,15,0,30" Source="{Binding Image}" HorizontalOptions="Center"></ImageButton>
+                <Frame Padding="30,0,30,0" Margin="0,0,0,0" CornerRadius="0" HasShadow="False">
+                    <Entry x:Name="NickNameEntry" Text="{Binding NickName}" Placeholder="NickName" FontSize="17"></Entry>
+                </Frame>
+                
+                <Frame Padding="30,0,30,50" CornerRadius="0" HasShadow="False">
+                    <Entry x:Name="NameEntry" Text="{Binding FullName}" Placeholder="Name" FontSize="17"></Entry>
+                </Frame>
+
+                <Frame Padding="30,0,30,0" CornerRadius="0" HasShadow="False">
+                    <Editor MaxLength="120" x:Name="Description" Text="{Binding Description}" Placeholder="Description" FontSize="17" BackgroundColor="#e6e6e6" HeightRequest="200" />
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
